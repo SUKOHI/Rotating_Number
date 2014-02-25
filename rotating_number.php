@@ -33,7 +33,7 @@ class Rotating_Number {
 			$next_number = $this->getNextNumber($current_number, $max_number);
 			
 			$db_params = array_merge(array($next_number), $db_params);
-			$pdo->updateDb($db_table, $db_field .'=?', $db_where, $db_params);
+			$pdo->update($db_table, $db_field .'=?', $db_where, $db_params);
 			
 		} else if(is_array($params[self::MODE_FILE])) {
 			
@@ -70,6 +70,8 @@ class Rotating_Number {
 
 /*** Sample
 
+	$rn = new Rotating_Number();
+	
 	echo $rotating_number = $rn->getNumber(array(
 			
 		Rotating_Number::MODE_DB => array(
